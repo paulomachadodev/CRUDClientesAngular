@@ -1,0 +1,132 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title text-center">Edição de Clientes</h5>
+
+    <p class="card-text">Preencha os campos para editar um cliente.</p>
+    <hr />
+
+    <form [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
+
+      <input type="hidden" formControlName="idCliente" />
+
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <label>Nome do cliente:</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="nome"
+            placeholder="Digite aqui"
+          />
+          <div
+            class="text-danger"
+            *ngIf="form.nome.touched && form.nome.invalid"
+          >
+            <span *ngIf="form.nome.errors.required">
+              Por favor, informe o nome do funcionário.
+            </span>
+            <span *ngIf="form.nome.errors.minlength">
+              Por favor, informe no mínimo 6 caracteres.
+            </span>
+            <span *ngIf="form.nome.errors.maxlength">
+              Por favor, informe no máximo 150 caracteres.
+            </span>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label>CPF:</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="cpf"
+            placeholder="Digite aqui"
+          />
+          <div class="text-danger" *ngIf="form.cpf.touched && form.cpf.invalid">
+            <span *ngIf="form.cpf.errors.required">
+              Por favor, informe o cpf do cliente.
+            </span>
+            <span *ngIf="form.cpf.errors.minlength">
+              Por favor, informe no mínimo 11 caracteres.
+            </span>
+            <span *ngIf="form.cpf.errors.maxlength">
+              Por favor, informe no máximo 11 caracteres.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label>Telefone:</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="telefone"
+            placeholder="Digite aqui"/>
+            <div class="text-danger" *ngIf="form.telefone.touched && form.telefone.invalid">
+                <span *ngIf="form.telefone.errors.required">
+                  Por favor, informe o telefone do cliente.
+                </span>
+                <span *ngIf="form.telefone.errors.minlength">
+                    Por favor, informe 6 no mínimo caracteres.
+                  </span>
+                  <span *ngIf="form.telefone.errors.maxlength">
+                    Por favor, informe no máximo 15 caracteres.
+                  </span>
+            </div>
+        </div>
+        <div class="col-md-4">
+          <label>E-mail:</label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Digite aqui"
+          />
+          <div class="text-danger" *ngIf="form.email.touched && form.email.invalid">
+            <span *ngIf="form.email.errors.required">
+              Por favor, informe o emial do cliente.
+            </span>
+            <span *ngIf="form.email.errors.minlength">
+                Por favor, informe 6 no mínimo caracteres.
+              </span>
+              <span *ngIf="form.email.errors.maxlength">
+                Por favor, informe no máximo 30 caracteres.
+              </span>
+        </div>
+        </div>
+        <div class="col-md-4">
+          <label>Data de Nascimento:</label>
+          <input
+            type="date"
+            class="form-control"
+            formControlName="dataNascimento"/>
+            <div class="text-danger" *ngIf="form.dataNascimento.touched && form.dataNascimento.invalid">
+                <span *ngIf="form.dataNascimento.errors.required">
+                  Por favor, informe a data de nascimento do cliente.
+                </span>
+            </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <input
+            type="submit"
+            value="Salvar Alterações"
+            class="btn btn-primary"
+          />
+          &nbsp;
+          <button [routerLink]="['/consulta-clientes']" class="btn btn-primary">
+            Voltar
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="mt-3">
+        <strong>{{mensagem_sucesso}}</strong>
+    </div>
+
+  </div>
+</div>

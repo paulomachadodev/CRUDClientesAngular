@@ -1,0 +1,138 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title  text-center">Cadastro de Clientes</h5>
+
+    <p class="card-text">Preencha os campos para cadastrar um cliente.</p>
+    <hr />
+
+    <form [formGroup]="formCadastroClientes" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <label>Nome do cliente:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Digite aqui"
+            formControlName="nome"
+          />
+          <div
+            class="text-danger"
+            *ngIf="form.nome.touched && form.nome.invalid"
+          >
+            <span *ngIf="form.nome.errors.required"
+              >Favor inserir um nome.</span
+            >
+            <span *ngIf="form.nome.errors.minLength"
+              >Favor inserir um mínimo de 6 caracteres.</span
+            >
+            <span *ngIf="form.nome.errors.maxLength"
+              >Favor inserir um máximo de 150 caracteres.</span
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label>CPF:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Digite aqui"
+            formControlName="cpf"
+            mask="000.000.000-00"
+          />
+          <div class="text-danger" *ngIf="form.cpf.touched && form.cpf.invalid">
+            <span *ngIf="form.cpf.errors.required">Favor inserir um CPF.</span>
+            <span *ngIf="form.cpf.errors.minLength"
+              >Favor inserir 11 caracteres.</span
+            >
+            <span *ngIf="form.cpf.errors.maxLength"
+              >Favor inserir 11 caracteres.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label>Telefone:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Digite aqui"
+            formControlName="telefone"
+            mask="(00) 00000-0000"
+          />
+          <div
+            class="text-danger"
+            *ngIf="form.telefone.touched && form.telefone.invalid"
+          >
+            <span *ngIf="form.telefone.errors.required"
+              >Favor inserir um telefone.</span
+            >
+            <span *ngIf="form.telefone.errors.minLength"
+              >Favor inserir no mínimo 9 caracteres.</span
+            >
+            <span *ngIf="form.telefone.errors.maxLength"
+              >Favor inserir no máximo 15 caracteres.</span
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label>E-mail:</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Digite aqui"
+            formControlName="email"
+          />
+          <div
+            class="text-danger"
+            *ngIf="form.email.touched && form.email.invalid"
+          >
+            <span *ngIf="form.email.errors.required"
+              >Favor inserir um e-mail.</span
+            >
+            <span *ngIf="form.email.errors.minLength"
+              >Favor inserir no mínimo 10 caracteres.</span
+            >
+            <span *ngIf="form.email.errors.email"
+              >Favor inserir um e-mail válido.</span
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label>Data de Nascimento:</label>
+          <input
+            type="date"
+            class="form-control"
+            formControlName="dataNascimento"
+          />
+          <div
+            class="text-danger"
+            *ngIf="form.dataNascimento.touched && form.dataNascimento.invalid"
+          >
+            <span *ngIf="form.dataNascimento.errors.required"
+              >Favor inserir uma data de nascimento.</span
+            >
+            <span *ngIf="form.dataNascimento.errors.minLength"
+              >Favor inserir no mínimo 7 caracteres.</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <input
+            type="submit"
+            value="Cadastrar Funcionário"
+            class="btn btn-primary"
+            [disabled]="!formCadastroClientes.valid"
+          />
+        </div>
+      </div>
+    </form>
+
+    <div class="mt=3">
+      <strong>{{ mensagem_cadastro }}</strong>
+    </div>
+  </div>
+</div>

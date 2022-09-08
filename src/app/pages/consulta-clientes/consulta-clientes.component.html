@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title text-center">Consulta de Clientes</h5>
+    <p class="card-text">Listagem de clientes cadastrados</p>
+    <hr />
+
+    <table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>Nome do cliente</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th>Data de nascimento</th>
+          <th>Operações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of clientes">
+          <td>{{ c.nome }}</td>
+          <td>{{ c.cpf | mask: "000.000.000-00" }}</td>
+          <td>{{ c.telefone | mask: "(00) 00000-0000" }}</td>
+          <td>{{ c.email }}</td>
+          <td>{{ c.dataNascimento | date: "dd/MM/yyyy" }}</td>
+          <td>
+            <button
+              class="btn btn-outline-primary btn-sm"
+              [routerLink]="['/edicao-clientes', c.idCliente]"
+            >
+              Editar
+            </button>
+            &nbsp;
+            <button class="btn btn-outline-danger btn-sm" (click)="onDelete(c.idFuncionario)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <strong>Quantidade de clientes: </strong> {{ clientes.length }}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
